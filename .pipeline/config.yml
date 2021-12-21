@@ -12,16 +12,8 @@
 
 ### General project setup
 general:
-  inferBuildTool: true
-  Build:
-    mavenExecuteStaticCodeChecks: false
-    npmExecuteLint: false
-  Additional Unit Tests:
-    npmExecuteScripts: false
-    karmaExecuteTests: false
-  Release:
-    cloudFoundryDeploy: true
-    tmsUpload: false
+  productiveBranch: 'main'
+  buildTool: 'mta'
 
 ### Step-specific configuration
 steps:
@@ -43,8 +35,14 @@ steps:
 
 ### Stage-specific configuration
 stages:
+  'Central Build':
+    buildExecute : true
+
   'Confirm':
     manualConfirmation: false
+
+  'Release':
+    cloudFoundryDeploy: false
 
 #  Integration:
 #    credentials:
